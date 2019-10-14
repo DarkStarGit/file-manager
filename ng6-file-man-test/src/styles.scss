@@ -1,0 +1,12 @@
+$main-color: #626e80;
+$text-color: black;
+$contrast-color: white;
+$hasAnimations: false;
+$border-radius: 20px;
+
+@import "~ng6-file-man/assets/ng6-file-man-styles";
+
+div.item-holder app-node {
+  flex-grow: 1;
+  text-align: center;
+}

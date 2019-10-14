@@ -1,0 +1,63 @@
+<div id="file-manager">
+  <fm-file-manager [tree]="tree"
+                   [isPopup]="true"
+                   [language]="appLanguage"
+                   (itemClicked)="itemClicked($event)"
+                   [iconTemplate]="iconTemplate"
+                   [folderContentTemplate]="folderContentTemplate"
+                   [folderContentBackTemplate]="folderContentBackTemplate"
+                   [folderContentNewTemplate]="folderContentNewTemplate"
+                   [loadingOverlayTemplate]="loadingOverlayTemplate"
+                   [sideViewTemplate]="sideViewTemplate">
+  </fm-file-manager>
+</div>
+
+<ng-template let-node #iconTemplate>
+  <i class="fas fa-arrow-alt-circle-right" style="padding: 5px"></i>{{node.name}}
+</ng-template>
+
+<ng-template let-node #folderContentTemplate>
+  <div class="item"
+       style="padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; cursor: pointer;">
+    <i class="fas fa-arrow-alt-circle-right" style="padding: 0 5px"></i>
+    <span style="padding: 0 5px">{{node.name}}</span>
+  </div>
+</ng-template>
+
+<ng-template let-node #folderContentBackTemplate>
+  <div class="item"
+       style="font-weight: bold; padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">
+    <i class="fas fa-arrow-alt-circle-left" style="padding: 0 5px"></i>BACK
+  </div>
+</ng-template>
+
+<ng-template let-node #folderContentNewTemplate>
+  <div class="item"
+       style="font-weight: bold;padding: 5px; border: 1px solid #ccc; margin: 3px; border-radius: 5px; width: 150px; cursor: pointer;">
+    <i class="fas fa-plus-circle" style="padding: 0 5px"></i>NEW
+  </div>
+</ng-template>
+
+<ng-template let-timeoutMessage #loadingOverlayTemplate>
+  <div class="backdrop">
+    <div class="error" *ngIf="timeoutMessage">{{timeoutMessage}}</div>
+  </div>
+  <div class="spinner">
+    <i class="fas fa-5x fa-spin fa-sync-alt"></i>
+  </div>
+</ng-template>
+
+<ng-template let-node #sideViewTemplate>
+  <div style="text-align: center">
+    <table>
+      <tr>
+        <td>Path:</td>
+        <td>{{node.pathToNode}}</td>
+      </tr>
+      <tr>
+        <td>ID:</td>
+        <td>{{node.id}}</td>
+      </tr>
+    </table>
+  </div>
+</ng-template>
